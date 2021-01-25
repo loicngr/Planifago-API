@@ -1,0 +1,41 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}{{ 'Import' | trans }}{% endblock %}
+
+{% block page_content %}
+    {{ form_start(form) }}
+        <div class="field-text form-group">
+            {{ form_label(form.file) }}
+            <div class="form-widget">
+                {{ form_widget(form.file) }}
+            </div>
+        </div>
+        <div class="field-text form-group">
+            {{ form_label(form.entity) }}
+            <div class="form-widget">
+                {{ form_widget(form.entity) }}
+            </div>
+        </div>
+        <div class="field-text form-group">
+            {{ form_label(form.offset) }}
+            <div class="form-widget">
+                {{ form_widget(form.offset) }}
+            </div>
+        </div>
+        <div class="field-text form-group">
+            {{ form_label(form.limit) }}
+            <div class="form-widget">
+                {{ form_widget(form.limit) }}
+            </div>
+        </div>
+        <div class="field-text form-group">
+            <label class="form-control-label"></label>
+            <div class="form-widget">
+                <button class="btn btn-primary">{{ 'Import' }}</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+    <div>{{ output }}</div>
+
+{% endblock %}

@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Chat\Message;
 use App\Repository\UserRepository;
+use DateTime;
+use DateTimeZone;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,6 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ApiResource(mercure=true)
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class User implements UserInterface
 {
@@ -500,4 +503,27 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new DateTime('now', new DateTimeZone('Indian/Reunion'));
+        $this->updatedAt = new DateTime('now', new DateTimeZone('Indian/Reunion'));
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new DateTime('now', new DateTimeZone('Indian/Reunion'));
+    }
+
+    public function getFullname()
+    {
+        return $this->getFirstname() . ' ' . $this->getLastname() ;
+    }
+
 }

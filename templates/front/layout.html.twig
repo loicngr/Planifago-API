@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--====== Required meta tags ======-->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Welcome!{% endblock %}</title><!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="{{ asset('static/front/images/favicon.ico') }}" type="image/png">
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}{% endblock %}
+
+        {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+
+        {% block menu %}
+            <!--====== OFFCANVAS MENU PART START ======-->
+            <div class="off_canvars_overlay"></div>
+            {% include 'front/partials/_menu.html.twig' %}
+            <!--====== OFFCANVAS MENU PART ENDS ======-->
+        {% endblock %}
+
+        {% block header %}
+            <!--====== HEADER PART START ======-->
+            {% include 'front/partials/_header.html.twig' %}
+            <!--====== HEADER PART ENDS ======-->
+        {% endblock %}
+
+        <!--====== HERO PART START ======-->
+        {% block hero %}
+            {% include 'front/partials/_hero.html.twig' %}
+        {% endblock %}
+        <!--====== HERO PART ENDS ======-->
+
+        {% block body %}
+            <!--====== FWATURE PART START ======-->
+            {% include 'front/partials/_features.html.twig' %}
+            <!--====== FWATURE PART ENDS ======-->
+
+            <!--====== BENEFITS PART START ======-->
+            {% include 'front/partials/_benefits.html.twig' %}
+            <!--====== BENEFITS PART ENDS ======-->
+
+            <!--====== PRICING  PART START ======-->
+            {% include 'front/partials/_pricing.html.twig' %}
+            <!--====== PRICING  PART ENDS ======-->
+
+            <!--====== COUNTER PART START ======-->
+            {% include 'front/partials/_counter.html.twig' %}
+            <!--====== COUNTER PART ENDS ======-->
+
+            <!--====== TESTIMONIAL PART START ======-->
+            {% include 'front/partials/_testimonial.html.twig' %}
+            <!--====== TESTIMONIAL PART ENDS ======-->
+
+            <!--====== TOOLS PART START ======-->
+            {% include 'front/partials/_tools.html.twig' %}
+            <!--====== TOOLS PART ENDS ======-->
+
+            <!--====== VIDEO PART START ======-->
+            {% include 'front/partials/_video.html.twig' %}
+            <!--====== VIDEO PART ENDS ======-->
+
+            <!--====== SCREENSHOTS PART START ======-->
+            {% include 'front/partials/_screens.html.twig' %}
+            <!--====== SCREENSHOTS PART ENDS ======-->
+
+            <!--====== FAQ PART START ======-->
+            {% include 'front/partials/_faq.html.twig' %}
+            <!--====== FAQ PART ENDS ======-->
+
+            <!--====== NEWS PART START ======-->
+            {% include 'front/partials/_news.html.twig' %}
+            <!--====== NEWS PART ENDS ======-->
+
+            <!--====== DOWNLOAD PART START ======-->
+            {% include 'front/partials/_download.html.twig' %}
+            <!--====== DOWNLOAD PART ENDS ======-->
+        {% endblock %}
+
+        <!--====== FOOTER PART START ======-->
+        {% block footer %}
+            {% include 'front/partials/_footer.html.twig' %}
+        {% endblock %}
+        <!--====== FOOTER PART ENDS ======-->
+
+        <!--====== BACK TO TOP START ======-->
+        {% cache "backtotop" ttl(600) %}
+            <a class="back-to-top"><i class="fas fa-angle-up"></i></a>
+        {% endcache %}
+        <!--====== BACK TO TOP ENDS ======-->
+    </body>
+</html>

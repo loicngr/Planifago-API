@@ -27,12 +27,6 @@ class Department
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Region::class, inversedBy="departments")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $region;
-
-    /**
      * @ORM\OneToMany(targetEntity=City::class, mappedBy="department", orphanRemoval=true)
      */
     private $cities;
@@ -55,18 +49,6 @@ class Department
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getRegion(): ?Region
-    {
-        return $this->region;
-    }
-
-    public function setRegion(?Region $region): self
-    {
-        $this->region = $region;
 
         return $this;
     }

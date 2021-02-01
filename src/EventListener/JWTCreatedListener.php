@@ -30,13 +30,14 @@ class JWTCreatedListener
 
         $payload = $event->getData();
         $user = $event->getUser();
-
         if(!$user instanceof UserInterface) {
             return;
         }
 
         $payload['ip'] = $request->getClientIp();
-        $payload['id'] = '/api/users/' . $user->getId();
+        if(method_exists($user, 'getId')):
+            $payload['id'] = '/api/users/' . $user->getId();
+        endif;
         $event->setData($payload);
 
         $header        = $event->getHeader();

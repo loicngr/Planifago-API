@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\EventRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 
 /**
  * @ApiResource()
+ * @ApiFilter(BooleanFilter::class, properties={"isPublic" : "exact"})
  * @ORM\Entity(repositoryClass=EventRepository::class)
  */
 class Event
@@ -92,6 +95,11 @@ class Event
      * @ORM\OneToOne(targetEntity=Pool::class, mappedBy="event", cascade={"persist", "remove"})
      */
     private $pool;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     public function __construct()
     {
@@ -300,6 +308,18 @@ class Event
         }
 
         $this->pool = $pool;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
